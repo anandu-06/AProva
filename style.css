@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -5,11 +6,19 @@ body {
   color: #333;
 }
 
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 /* Header / Hero Section */
 .hero {
   text-align: center;
   padding: 30px 20px;
   background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
@@ -23,15 +32,19 @@ body {
 }
 
 .navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 20px;
 }
 
 .navbar a {
-  margin: 0 15px;
   text-decoration: none;
   color: #333;
   font-weight: bold;
   font-size: 1.1rem;
+  padding: 8px 12px;
 }
 
 /* Products Section */
@@ -141,7 +154,7 @@ body {
   }
 }
 
-/* Responsive Mobile Styles */
+/* Final Responsive Styles */
 @media (max-width: 768px) {
   .hero {
     padding: 20px 10px;
@@ -151,17 +164,32 @@ body {
   .logo {
     width: 80px;
     height: auto;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 10px 0;
   }
 
   .tagline {
     font-size: 1rem;
-    padding: 5px;
+    padding: 5px 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
   }
 
   .navbar a {
-    display: block;
-    margin: 10px 0;
     font-size: 1rem;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
   }
 
   .products {
@@ -169,16 +197,17 @@ body {
   }
 
   .product-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-  }
-
-  .product img {
-    height: 160px;
   }
 
   .product {
     padding: 15px;
+  }
+
+  .product img {
+    height: 160px;
   }
 
   .product h3 {
@@ -202,3 +231,25 @@ body {
     font-size: 1rem;
   }
 }
+
+.popup {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 1000;
+  font-size: 14px;
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+

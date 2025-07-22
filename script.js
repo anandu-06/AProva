@@ -10,46 +10,13 @@ function addToCart(button) {
     button.innerText = "Add to Cart";
     button.disabled = false;
   }, 1500);
-}
-window.addEventListener("load",()=>
-{
-    const splash=
-    document.getElementById("splash-screen");
-    setTimeout(() => {
-        splash.style.display="none";
-    }, 3500);
-})
-document.querySelector('.add-to-cart').addEventListener('click', () => {
-    cartCount++;
-    document.querySelector('.cart-count').textContent = cartCount;
-    showPopup('Product added to cart!');
-});
-
-// Sample related products (to be expanded)
-const relatedProducts = [
-    { name: "Nike Air Force 1", price: "$150.00", image: "https://via.placeholder.com/150" },
-    { name: "Adidas Ultra Boost", price: "$180.00", image: "https://via.placeholder.com/150" }
-];
-
-const productGrid = document.querySelector('.product-grid');
-relatedProducts.forEach(product => {
-    const productDiv = document.createElement('div');
-    productDiv.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-    `;
-    productGrid.appendChild(productDiv);});
-showPopup("Nice pick! The item is added to your cart.")
-
-function showPopup(message) {
-  const popup = document.getElementById('popup');
-  if (!popup) return;
-
-  popup.textContent = message;
-  popup.classList.add('show');
-
-  setTimeout(() => {
-    popup.classList.remove('show');
-  }, 2000);
-}
+  const popup = document.getElementById('popupMessage');
+       popup.style.display = 'block'; // Show popup
+       popup.style.opacity = '1'; // Make sure it's fully opaque
+       setTimeout(function() {
+           popup.style.opacity = '0'; // Fade out
+           setTimeout(function() {
+               popup.style.display = 'none'; // Hide after fade
+           }, 500); // Wait for fade out to finish
+       }, 5000); // Wait for 5 seconds
+   };
